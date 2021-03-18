@@ -3,16 +3,12 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 
 function App() {
+    //variables
     let [coins, setCoins] = useState([]);
     let [scrollCoins, setScrollCoins] = useState([]);
+    let [coinsAdd, setCoinsAdd] = useState([]);
 
-  useEffect(() => {
-        axios.get('https://api.coingecko.com/api/v3/coins/list')
-            .then(res => {
-                setCoins(res.data);
-            });
-    },[]);
-
+    //Axios Calls
     useEffect(() => {
         axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cdogecoin%2Cethereum%2Clitecoin%2Cripple%2Ctether&vs_currencies=usd&include_24hr_change=true')
             .then(res => {
@@ -20,6 +16,15 @@ function App() {
             });
     },[]);
 
+    useEffect(() => {
+      axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+          .then(res => {
+              setCoins((res.data).slice(0, 20));
+              console.log(coins);
+          });
+    },[]);
+
+    //Custom Functions for Organization
     const capitalize = (s) => {
       if (typeof s !== 'string') return ''
       return s.charAt(0).toUpperCase() + s.slice(1)
@@ -28,7 +33,7 @@ function App() {
     function formatNumber(num) {
       return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
-    
+
     return (
     <div className="App">
       <p className="titletext" id="mainTitle">Cryptocurrency Calculator</p>
@@ -75,11 +80,12 @@ function App() {
 
       <p className="titletext" id="calcTitle">Current Ownings Calculator</p>
       
-      {coins.map((c) => (
-        <div>
-          
-        </div>
-      ))}
+      <form>
+        <select id="addCrypto">
+        
+        </select>
+      </form>
+      
     </div>
   );
 }
