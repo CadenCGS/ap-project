@@ -1,0 +1,59 @@
+#calcApp {
+    width: 1797px;
+    background-color: #2c2f33;
+    border: 2px solid #99aab5;
+    margin: auto;
+}
+
+#calcElement {
+    width: 1600px;
+    height: auto;
+    background-color: #23272a;
+    margin: auto;
+    margin-top: 17.5px;
+    margin-bottom: 17.5px;
+    height: 275px;
+}
+
+#coinImg {
+    margin-left: -1200px;
+    height: 235px;
+    margin-top: 20px;
+}
+
+#calcInfo {
+    margin-left: 22%;
+    width: 78%;
+    text-align: left;
+}
+
+#calcName {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: -210px;
+}
+
+#calcSymbol {
+    color: white;
+    font-size: 2rem;
+}
+
+#calcPrice {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+#calcChange {
+    font-size: 1.5rem;
+}
+
+.gain {
+    color: green;
+}
+
+.loss {
+    color: red;
+}
