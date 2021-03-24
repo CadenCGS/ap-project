@@ -6,6 +6,7 @@ function MainApp() {
     let [coins, setCoins] = useState([]);
     let [disCoins, setDisCoins] = useState([]);
     const [value, setValue] = useState("bitcoin");
+    let amount;
 
     useEffect(() => {
         axios
@@ -38,6 +39,10 @@ function MainApp() {
         return s.charAt(0).toUpperCase() + s.slice(1)
     }
 
+    function formatNumber(num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
+
     return (
         <div id="calcApp">
             {disCoins.map((c) => (
@@ -45,7 +50,22 @@ function MainApp() {
                 <img id="coinImg" src={c.image} alt="Coin img"></img>
                 <div id="calcInfo">
                     <div id="calcName">{c.name}<span id="calcSymbol">  ({capitalize(c.symbol)})</span></div>
-                    <div id="calcPrice">{c.current_price}<span id="calcChange" className={c.price_change_percentage_24h < 0 ? "loss" : "gain"}>  ({c.price_change_percentage_24h}%)</span></div>
+                    <div id="calcPrice">
+                        ${formatNumber(c.current_price)}
+                        <span id="calcChange" className={c.price_change_percentage_24h < 0 ? "loss" : "gain"}>  ({c.price_change_percentage_24h}%)</span>
+                    </div>
+                </div>
+                <div id="x">
+                    <span>×</span>
+                </div>
+                <div id="amountInput">
+                    <input id="aInField" type="number" placeholder="Amount of Crypto Owned"></input>
+                </div>
+                <div id="eq">
+                    <span>=</span>
+                </div>
+                <div id="subTot">
+                    <span id="subTotal"></span>
                 </div>
                 </div>
             ))}
