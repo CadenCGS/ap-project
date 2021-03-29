@@ -40,7 +40,15 @@ function MainApp() {
     }
 
     function formatNumber(num) {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        let result;
+        if (num > 100){
+            result = num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        }
+        else {
+            result = num;
+        }
+
+        return result;
     }
 
     return (
@@ -59,14 +67,16 @@ function MainApp() {
                     <span>×</span>
                 </div>
                 <div id="amountInput">
-                    <input id="aInField" type="number" placeholder="Amount of Crypto Owned"></input>
+                    <input id="amountInput" type="number" placeholder="Amount of Crypto Owned"></input>
                 </div>
-                <div id="eq">
+                {/* <div id="eq">
                     <span>=</span>
-                </div>
+                </div> */}
                 <div id="subTot">
                     <span id="subTotal"></span>
                 </div>
+                {console.log(Number(c.current_price))}
+                {console.log(document.getElementById('amountInput'))}
                 </div>
             ))}
 
