@@ -66,7 +66,7 @@
 }
 
 #amountInput {
-    margin-left: 275px;
+    margin-left: 300px;
     margin-top: -40px;
 }
 
@@ -76,8 +76,16 @@
 }
 
 #eq {
-    margin-left: 700px;
+    margin-left: 775px;
     font-size: 3rem;
     color: white;
-    margin-top: -52.5px;
+    margin-top: -48px;
+}
+
+#subTot {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-left: 1200px;
+    margin-top: -50px;
 }
