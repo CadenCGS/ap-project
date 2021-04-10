@@ -28,7 +28,7 @@ function PopBar() {
         </div>
 
         <div className="scrollElement" id="dogecoin">
-            <img style={{height: 110, float: 'left', marginTop: 35}} alt="doge img" src="http://assets.stickpng.com/thumbs/5a521f522f93c7a8d5137fc7.png"></img>
+            <img style={{height: 110, float: 'left', marginTop: 35}} alt="doge img" src="https://cdn.freebiesupply.com/logos/large/2x/dogecoin-logo-png-transparent.png"></img>
             <p>{capitalize(scrollCoins[1][0])}</p>
             <p>${scrollCoins[1][1].usd} <span className={scrollCoins[1][1].usd_24h_change < 0 ? "loss" : "gain"}>({(scrollCoins[1][1].usd_24h_change.toFixed(2))}%)</span></p>
         </div>

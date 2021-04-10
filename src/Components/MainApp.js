@@ -2,12 +2,12 @@ import './MainApp.css'
 import ElementMap from './ElementMap.js'
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Total from './Total.js'
 
 function MainApp() {
     let [coins, setCoins] = useState([]);
     let [disCoins, setDisCoins] = useState([]);
     const [value, setValue] = useState("bitcoin");
-    let [total, setTotal] = useState('0');
 
     useEffect(() => {
         axios
@@ -15,7 +15,7 @@ function MainApp() {
             "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         )
         .then((res) => {
-            setCoins(res.data.slice(0, 18));
+            setCoins(res.data.slice(0, 19));
         });
     }, []);
 
@@ -50,7 +50,7 @@ function MainApp() {
         }
         return result;
     }
-
+    
     return (
         <div id="calcApp">
             {disCoins.map((c) => (
@@ -80,6 +80,8 @@ function MainApp() {
                 </select>
                 <input type="submit" value="Add Coin"></input>
             </form>
+
+            <Total />
         </div>
     );
 }
