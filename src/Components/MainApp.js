@@ -10,12 +10,11 @@ function MainApp() {
     const [value, setValue] = useState("bitcoin");
 
     useEffect(() => {
-        axios
-        .get(
+        axios.get(
             "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         )
         .then((res) => {
-            setCoins(res.data.slice(0, 19));
+            setCoins(res.data.slice(0, 17));
         });
     }, []);
 
@@ -60,7 +59,7 @@ function MainApp() {
                     <div id="calcName">{c.name}<span id="calcSymbol">  ({capitalize(c.symbol)})</span></div>
                     <div id="calcPrice">
                         ${formatNumber(c.current_price)}
-                        <span id="calcChange" className={c.price_change_percentage_24h < 0 ? "loss" : "gain"}>  ({c.price_change_percentage_24h}%)</span>
+                        <span id="calcChange" className={c.price_change_percentage_24h < 0 ? "loss" : "gain"}>  ({c.price_change_percentage_24h.toFixed(2)}%)</span>
                     </div>
                 </div>
                 <div id="x">

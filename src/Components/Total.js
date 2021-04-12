@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import './Total.css'
+import './currencyData.json'
 
 function Total(){
 
     let [total, setTotal] = useState(Number('0'));
     let [updateTotal, setUpdateTotal] = useState(false);
+    let currencies;
 
     const totalfy = (num) => {
         return parseFloat(num.replace(/[, ]+/g, ""));
@@ -29,9 +32,16 @@ function Total(){
         return result;
     }
 
+    function currencyConvert(){
+        for(let i = 0; i < currencies.length; i++){
+
+        }
+    }
+
     return(
-        <div id="totalText">
-            ${formatNumber(total.toFixed(2))}
+        <div>
+            <span id="preTotalText">Total: </span><span id="totalText">${formatNumber(total.toFixed(2))}</span>
+            <p><span id="cPreTotalText">Converted Total: </span><span id="totalText">${formatNumber(total.toFixed(2))}</span></p>
         </div>
     )
 }
