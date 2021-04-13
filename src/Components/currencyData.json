@@ -2,35 +2,30 @@
     {
         "name": "Euro",
         "symbol": "€",
-        "abbv": "EUR",
         "value": "0.84"
 
     },
     {
         "name": "Japanese Yen",
         "symbol": "¥",
-        "abbv": "JPY",
         "value": "109.29"
 
     },
     {
         "name": "Chinese Yen",
         "symbol": "¥",
-        "abbv": "CNY",
         "value": "6.55"
 
     },
     {
         "name": "Australian Dollar",
         "symbol": "A$",
-        "abbv": "AUD",
         "value": "1.31"
 
     },
     {
         "name": "Great British Pound",
         "symbol": "£",
-        "abbv": "GBP",
         "value": "0.73"
 
     }

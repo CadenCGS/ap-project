@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios'
 import './Total.css'
-import './currencyData.json'
+import currencies from './currencyData.json'
 
 function Total(){
 
     let [total, setTotal] = useState(Number('0'));
     let [updateTotal, setUpdateTotal] = useState(false);
-    let currencies;
+    const [value, setValue] = useState("Euro");
+    let rates = currencies;
+    let [selRate, setSelRate] = useState(Number('1'));
+    let [selSym, setSelSym] = useState("$");
+    let convTotal = total * selRate;
 
     const totalfy = (num) => {
         return parseFloat(num.replace(/[, ]+/g, ""));
@@ -32,16 +35,36 @@ function Total(){
         return result;
     }
 
-    function currencyConvert(){
-        for(let i = 0; i < currencies.length; i++){
-
+    const newCalcData = (e) => {
+        e.preventDefault();
+        if (value) {
+            for (let i = 0; i < rates.length; i++) {
+                if (value === rates[i].name){
+                    setSelSym(rates[i].symbol);
+                    setSelRate(rates[i].value);
+                }
+            }
         }
-    }
+    };
+
+    const handleValue = ({ target }) => {
+        setValue(target.value);
+    };
 
     return(
         <div>
             <span id="preTotalText">Total: </span><span id="totalText">${formatNumber(total.toFixed(2))}</span>
-            <p><span id="cPreTotalText">Converted Total: </span><span id="totalText">${formatNumber(total.toFixed(2))}</span></p>
+            <p><span id="cPreTotalText">Converted Total: </span><span id="totalText">{selSym}{formatNumber(convTotal.toFixed(2))}</span></p>
+            <form onSubmit={newCalcData}>
+                <select onChange={handleValue}>
+                    {rates.map((c) => (
+                        <option value={c.name}>
+                            {c.name}
+                        </option>
+                    ))}
+                </select>
+                <input type="submit" value="Convert"></input>
+            </form>
         </div>
     )
 }
