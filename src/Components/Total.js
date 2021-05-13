@@ -35,7 +35,7 @@ function Total(){
         return result;
     }
 
-    const newCalcData = (e) => {
+    const newTotalConv = (e) => {
         e.preventDefault();
         if (value) {
             for (let i = 0; i < rates.length; i++) {
