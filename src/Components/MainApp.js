@@ -20,6 +20,10 @@ function MainApp() {
 
     const newCalcData = (e) => {
         e.preventDefault();
+        disCoinAdd();
+    };
+
+    function disCoinAdd(value){
         if (value) {
             for (let i = 0; i < coins.length; i++) {
                 if (value === coins[i].id){
@@ -28,7 +32,7 @@ function MainApp() {
                 }
             }
         }
-    };
+    }
 
     const handleValue = ({ target }) => {
         setValue(target.value);
