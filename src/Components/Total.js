@@ -35,7 +35,7 @@ function Total(){
         return result;
     }
 
-    const newTotalConv = (e) => {
+    const newCalcData = (e) => {
         e.preventDefault();
         if (value) {
             for (let i = 0; i < rates.length; i++) {
@@ -55,7 +55,7 @@ function Total(){
         <div>
             <span id="preTotalText">Total: </span><span id="totalText">${formatNumber(total.toFixed(2))}</span>
             <p><span id="cPreTotalText">Converted Total: </span><span id="totalText">{selSym}{formatNumber(convTotal.toFixed(2))}</span></p>
-            <form onSubmit={newCalcData}>
+            <form onSubmit={newTotalConv}>
                 <select onChange={handleValue}>
                     {rates.map((c) => (
                         <option value={c.name}>
