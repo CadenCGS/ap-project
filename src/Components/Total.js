@@ -37,6 +37,10 @@ function Total(){
 
     const newTotalConv = (e) => {
         e.preventDefault();
+        convUpdate();
+    };
+
+    function convUpdate(value){
         if (value) {
             for (let i = 0; i < rates.length; i++) {
                 if (value === rates[i].name){
@@ -45,7 +49,7 @@ function Total(){
                 }
             }
         }
-    };
+    }
 
     const handleValue = ({ target }) => {
         setValue(target.value);
